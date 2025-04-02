@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { LocalService } from 'src/app/core/services/local.service';
 import { PocketbaseService } from 'src/app/core/services/pocketbase.service';
-import { DomSanitizer, HammerModule, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { CommonModule, Location } from '@angular/common';
@@ -44,7 +44,6 @@ import { LoadingService } from 'src/app/core/services/loading.service';
     HourMinutePipe,
     MaterialModule,
     HeaderComponent,
-    HammerModule
   ],
 })
 export class HomeComponent {
