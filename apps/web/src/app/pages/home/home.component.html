@@ -1,0 +1,135 @@
+<div class="container" (swiperight)="deselectThread()">
+  <app-header [class.app-header-display]="isLoomSelected"></app-header>
+  <div class="app">
+    <div class="sidebar" [ngClass]="{ 'hide-sidebar': isLoomSelected }">
+      <div class="threads">
+        <!-- <div class="thread"> -->
+        <div class="newLoomContainer">
+          <button
+            *ngIf="!newLoomStatus"
+            mat-flat-button
+            (click)="toggleNewLoom()"
+          >
+          <mat-icon>playlist_add</mat-icon>
+            New Thread
+          </button>
+          <div *ngIf="newLoomStatus">
+            <input
+              type="text"
+              autofocus
+              placeholder="Your new thread name"
+              [(ngModel)]="newThreadName"
+              (keydown)="onInputKeyDown($event, 'loom')"
+              (blur)="newLoomStatus = false"
+            />
+          </div>
+        </div>
+        <div class="loomsView scroll-wrapper" [ngClass]="{'autoHeight': isLoomSelected} " #loomsView>
+          @for (thread of sortedThreads(this.looms); track thread.created)  {
+            <div
+              id="{{ thread.id }}"
+              class="thread"
+              [class.selectedThread]="thread.id === currentThreadId"
+              (click)="selectThread(thread)"
+            >
+              <p>{{ thread.title }}</p>
+              <button
+                class="moreBtn"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                (click)="handleMenuItemClick($event)"
+              >
+                <mat-icon class="moreMenu">more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button (click)="onEditLoom(thread)" class="select-menu-btn" mat-menu-item>
+                  <mat-icon aria-hidden="false" aria-label="Edit button" fontIcon="edit"></mat-icon>
+                  <span>Edit Thread</span>
+                </button>
+                <button (click)="deleteLoom(thread)" class="select-menu-btn"  mat-menu-item>
+                  <mat-icon aria-hidden="false" aria-label="Delete button" fontIcon="delete"></mat-icon>
+                  <span>Delete Thread</span>
+                </button>
+              </mat-menu>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="thread-view" [ngClass]="{ 'selected-loom': isLoomSelected }">
+      <div *ngIf="!(currentNotes == null)" class="loom-title-container">
+        @if (isLoomSelected) {
+        <div class="back-button">
+          <button
+            mat-icon-button
+            color="white"
+            (click)="deselectThread()"
+          >
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
+        <div class="loom-title">
+          <p>{{ selectedLoom.title }}</p>
+        </div>
+        }
+      </div>
+      <div class="content scroll-wrapper" #notesView>
+        @if (!isLoomSelected) {
+          <p style="align-self: center; font-size: large;">
+            Please select or create a thread.
+          </p>
+        }
+        @for (group of groupedNotes; track group.date) {
+          <div class="date-header">{{group.date}}</div>
+          <div *ngFor="let note of group.notes; let i = index">
+            <div class="note" matRipple [class.pendingNote]="note.is_local">            
+              <div class="noteDetails">
+                  <span [innerHTML]="convertUrlsToLinks(note.content)" class="noteContext">{{ note.content }}</span>
+  
+                
+                @if (note.created) {
+                <span class="hourText">{{ note.created | hourMinute }}</span>
+                }
+                <mat-icon class="noteMenu" [matMenuTriggerFor]="noteMenu"
+                  >expand_more</mat-icon
+                >
+              </div>
+              <!-- <button class="moreBtn" mat-icon-button [matMenuTriggerFor]="noteMenu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon class="moreMenu">more_vert</mat-icon>
+              </button> -->
+              <mat-menu #noteMenu="matMenu">
+                <button (click)="onEditNote(note)" mat-menu-item>
+                  <span>Edit Note</span>
+                </button>
+                <button (click)="onDeleteNote(note)" mat-menu-item>
+                  <span>Delete Note</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        }
+
+      </div>
+      @if (isLoomSelected) {
+        <div class="notes-input-container">
+          <div class="notesInput">
+                <textarea 
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  type="text" 
+                  [(ngModel)]="newNoteContext" 
+                  (keydown)="onInputKeyDown($event, 'note');"
+                  placeholder="Take a note..."
+                ></textarea>
+                <button mat-icon-button color="primary" aria-label="Send note button" [disabled]="newNoteContext.trim() === ''" (click)="addNote()">
+                  <mat-icon>send</mat-icon>
+                </button>
+          </div>
+          <!-- <button mat-flat-button color="primary">Primary</button> -->
+        </div>
+      }
+    </div>
+  </div>
+</div>

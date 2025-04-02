@@ -1,0 +1,210 @@
+/* You can add global styles to this file, and also import other style files */
+
+// fonts.gstatic.com/s/googlesans/v58/4UaXrENHsxJlGDuGo1OIlL3L2JB874GPhFI9_IqmuTCajshE7g.woff2
+
+/* styles.css or styles.scss */
+@use '@angular/material' as mat;
+@use '@angular/cdk';
+@include cdk.text-field-autosize;
+
+@include mat.core();
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('assets/fonts/OpenSans-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('assets/fonts/OpenSans-Regular.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('assets/fonts/OpenSans-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$azure-palette,
+  ),
+  // typography: (
+  //   brand-family: 'OpenSans',
+  //   regular-weight: 400
+  // )
+));
+
+
+html {
+  // Emit theme-dependent styles for common features used across multiple components.
+  @include mat.core-theme($dark-theme);
+
+  // Emit styles for MatButton based on `$my-theme`. Because the configuration
+  // passed to `define-theme` omits typography, `button-theme` will not
+  // emit any typography styles.
+  @include mat.all-component-themes($dark-theme);
+
+  // Include the theme mixins for other components you use here.
+}
+
+:root {
+  --bg-color: #18181b;
+  --main-color: #ffffff;
+  --main-font: 'OpenSans', ui-sans-serif,-apple-system,system-ui, Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica,Apple Color Emoji,Arial,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+* {
+  border: none;
+  scrollbar-color: var(--main-color);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: var(--main-font);
+  /* font-weight: 600; */
+  background-color: var(--bg-color);
+  color: var(--main-color);
+}
+
+input {
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn {
+  background-color: #93baf9;
+  color: #111b21;
+  border-radius: 4rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Satoshi", Roboto, "Helvetica Neue", sans-serif;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #93baf9;
+}
+
+.btn:active {
+  background-color: #afccfb;
+}
+
+.scroll-wrapper {
+  scrollbar-color: #9ebbf3 transparent;
+  scrollbar-width: thin;
+}
+
+textarea::-webkit-scrollbar {
+  scrollbar-width: thin;
+}
+
+// textarea::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+// }
+
+textarea::-webkit-scrollbar-thumb {
+background-color: #00000034;
+border-radius: 9999px;
+}
+
+// button {
+//     background-color: #282a2c;
+//     border-radius: 4rem;
+//     font-size: 1rem;
+//     padding: 0.5rem 2rem;
+//     font: var(--main-font);
+//     font-weight: 500;
+//     color: white;
+//     cursor: pointer;
+// }
+
+// button:hover {
+//     background-color: #393b3d;
+// }
+
+// button:active {
+//     background-color: #6c6e6e;
+// }
+
+// ::-webkit-scrollbar {
+//   background-color: transparent;
+//   /* color: #ffffff; */
+//   width: 6px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: #717171;
+//   border-radius: 1rem;
+// }
+
+// /* Buttons */
+// ::-webkit-scrollbar-button:single-button {
+//   /* background-color: #070b0d; */
+//   /* display: block; */
+//   border-style: solid;
+//   height: 8px;
+//   /* width: 16px; */
+// }
+
+// ::-webkit-scrollbar-button:single-button:vertical:decrement {
+//   /* border-width: 0 8px 8px 8px; */
+//   border-color: transparent transparent #717171 transparent;
+// }
+
+// ::-webkit-scrollbar-button:single-button:vertical:increment {
+//   border-color: #717171 transparent transparent transparent;
+// }
+
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }
+
+a {
+  outline-color: transparent;
+  text-decoration: none;
+  color: #53bdeb;
+  padding: 1px 5px;
+
+}
+
+a:link:hover {
+    text-decoration: underline;
+    // background-color: #99bbf734;
+    // border-radius: 8px;
+
+}
+
+// a:visited {
+//   color: #99beb7;
+// }
+
+// a:active {
+//   color: white;
+// }
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

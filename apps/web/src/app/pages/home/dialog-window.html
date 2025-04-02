@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit this {{data.type}}</h1>
+<mat-dialog-content>
+    <mat-form-field appearance="outline" style="width: 100%; height: 100%;">
+        <!-- <input matInput [(ngModel)]="data.title"> -->
+            <textarea [rows]="data.type === 'note' ? 5 : 1" overflow="auto" style="resize: none;" type="text" matInput [(ngModel)]="data.title"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [disabled]="data.title.trim() == ''" [mat-dialog-close]="data.title">Rename</button>
+</mat-dialog-actions>

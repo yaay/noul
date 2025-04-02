@@ -1,0 +1,22 @@
+mat-progress-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.loading-overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: rgba(184, 184, 184, 0.281); 
+    justify-content: center;
+    align-items: center;
+}
+
+.rounded-border {
+    border-radius: 2rem;    
+}

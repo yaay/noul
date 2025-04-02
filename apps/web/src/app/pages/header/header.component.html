@@ -1,0 +1,20 @@
+<div class="container">
+  <!-- <p class="margin">Looms!</p> -->
+   <div style="display: flex;">
+     <img class="logo" src="../../../assets/images/noul-logo.svg" alt="Noul Logo">
+     <span style="align-self: flex-end; margin-left: 5px; font-size: small;">Beta</span>
+   </div>
+
+   @if(!isOnline()) {
+    <p style="color: #ffffff75;">You're currently offline</p>
+  }
+   @if (!isAuth()) {
+      <div class="access-btns margin">
+      <button mat-flat-button [disabled]="!isOnline()" routerLink="/login">Sign in</button>
+    </div>
+  } @else {
+  <div class="access-btns margin">
+    <button mat-flat-button (click)="logOut()" [disabled]="!isOnline()">Log Out</button>
+  </div>
+  }
+</div>

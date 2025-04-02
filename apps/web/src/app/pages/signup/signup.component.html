@@ -1,0 +1,78 @@
+<img src="../../../assets/images/noul-logo.svg" class="logo" routerLink="/" alt="looms logo">
+<div class="container">
+    <mat-card class="box">
+        <h2>Create a Noul Account</h2>
+        <form  [formGroup]="signupForm" (ngSubmit)="signup()">
+            <div style="display: flex; flex-direction: column;">
+                <mat-form-field appearance="outline" class="fieldInput">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" type="text">              
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="fieldInput">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email" placeholder="Ex. pat@example.com">                
+                    @if (signupForm.controls.email.invalid) {
+                        <mat-error>{{errorMessages.email()}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="fieldInput">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password">
+                    @if (signupForm.controls.email.invalid) {
+                        <mat-error>{{errorMessages.password()}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="fieldInput">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput formControlName="passwordConfirm" type="password">
+                    @if (signupForm.controls.email.invalid) {
+                        <mat-error>{{errorMessages.passwordConfirm()}}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <button mat-flat-button class="btn" style="margin: 10px 0px;" [disabled]="signupForm.invalid" type="submit">Signup</button>
+            </form>
+            <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.034); position: relative; margin-bottom: 1rem; width: 80%; margin-top: calc(1rem - 11px);"></div>
+            <button matRipple class="btn g-btn" (click)="googleSignup()"
+            style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 488 512"
+                class="h-4 w-4 stroke-[1.5px] ltr:-ml-1 ltr:mr-2 rtl:-mr-1 rtl:ml-2" height="1em" width="1em"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
+                </path>
+            </svg>
+            Sign up with Google
+            </button>
+            <a style="color: #93baf9;" routerLink="/login">Have an account?</a>
+    </mat-card>
+</div>
+
+<!-- <div class="container">
+    <h1>Signup</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+
+
+        <div>
+            <div>
+                <p>Username</p>
+                <input formControlName="username" type="text">
+            </div>
+            <div>
+                <p>Email</p>
+                <input formControlName="email" type="email">
+            </div>
+            <div>
+                <p>Password</p>
+                <input formControlName="password" type="password">
+            </div>
+            <div>
+                <p>Password Confirmation</p>
+                <input formControlName="passwordConfirm" type="password">
+            </div>
+        </div>
+        <button>Signup</button>
+
+    </form>
+
+</div> -->

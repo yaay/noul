@@ -1,0 +1,80 @@
+.container {
+    /* width: fit-content; */
+    /* padding: 1rem; */
+    /* border-radius: 8px; */
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    /* height: 100%; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+
+button {
+     margin-bottom: 0.5rem;
+    /*
+    background-color: #9ab6f8;
+    padding: 0.5rem 1rem; 
+    border-radius: 1rem; */
+    width: 100%;
+    /* font-size: medium;
+    color: rgb(0, 0, 0);
+    font-weight: 600; */
+}
+
+.fieldInput {
+    /* margin-bottom: 24px; */
+    width: 22.5rem;
+}
+
+
+
+.logo {
+    /* font-family: "Sacramento", cursive; */
+    /* font-size: 2.5rem; */
+    width: 10rem;
+    height: auto;
+    padding: 1rem 2rem;    
+    margin: 14px 0px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 3.2rem;
+    font-weight: 800;}
+
+.box {
+    /* width: fit-content; */
+    background-color: #9ab6f810;
+    padding: 1.5rem;
+    border-radius: 2rem;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.g-btn {
+    background-color: transparent;
+    border: 1px solid #9ab6f8;
+    color: #9ab6f8;
+}
+
+.g-btn:hover {
+    background-color: #ffffff05;
+}
+
+.g-btn:active {
+    background-color: #ffffff15;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+mat-form-field {
+    margin-bottom: 0.5rem;
+}
