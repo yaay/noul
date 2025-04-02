@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  backend:
+    container_name: pocketbase
+    environment:
+      - SU_EMAIL=test@example.com
+      - SU_PASSWORD=1234567890
+    build:
+      context: ./pocketbase
+      args:
+        - VERSION=0.26.1
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - pb_data:/usr/local/bin/pb_data
+
+  frontend:
+    container_name: view
+    build:
+      context: ./view
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+volumes:
+  pb_data:
