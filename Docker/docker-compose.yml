@@ -6,7 +6,7 @@ services:
       - SU_EMAIL=test@example.com
       - SU_PASSWORD=1234567890
     build:
-      context: ./pocketbase
+      context: ../pocketbase
       args:
         - VERSION=0.26.1
     restart: unless-stopped
@@ -15,10 +15,10 @@ services:
     volumes:
       - pb_data:/usr/local/bin/pb_data
 
-  frontend:
-    container_name: view
+  web:
+    container_name: web
     build:
-      context: ./view
+      context: ../apps/web
     restart: unless-stopped
     ports:
       - "4200:80"

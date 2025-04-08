@@ -1,6 +1,6 @@
 FROM node:latest as build
 
-WORKDIR /view
+WORKDIR /web
 COPY package*.json ./
 RUN npm ci
 RUN npm install -g @angular/cli
@@ -10,6 +10,6 @@ RUN npm run build --configuration=production
 FROM nginx:latest
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /view/dist/noul/browser /user/share/ngix/html
+COPY --from=build /web/dist/noul/browser /usr/share/nginx/html
 
 EXPOSE 80
